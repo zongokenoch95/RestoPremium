@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Poulet braisé",
+    "category": "Plat",
+    "price": 3500,
+    "description": "Poulet braisé accompagné de riz et de légumes frais",
+    "image": "poulet.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Salade composée",
+    "category": "Entrées",
+    "price": 2000,
+    "description": "Salade fraîche avec tomates, concombres, œufs et vinaigrette",
+    "image": "salade.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Jus de Bissap",
+    "category": "Boissons",
+    "price": 500,
+    "description": "Boisson rafraîchissante locale à base de fleurs d'hibiscus",
+    "image": "bissap.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Alloco (Bananes plantains)",
+    "category": "Entrées",
+    "price": 1500,
+    "description": "Tranches de bananes plantains mûres et frites, servies avec piment",
+    "image": "alloco.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Thiéboudienne (Riz au poisson)",
+    "category": "Plat",
+    "price": 4000,
+    "description": "Plat traditionnel de riz rouge mijoté au poisson et légumes variés",
+    "image": "thieb.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Glace vanille / chocolat",
+    "category": "Desserts",
+    "price": 1500,
+    "description": "Boules de glace artisanale au choix",
+    "image": "glace.jpg"
+  }
+]
