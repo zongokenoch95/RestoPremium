@@ -1,15 +1,16 @@
 <template>
   <div id="restaurant-app">
-    <!-- Navbar (sera insérée dès sa création) -->
+    <Navbar />
     <main class="main-content">
       <router-view />
     </main>
-    <!-- Footer (sera inséré dès sa création) -->
+    <Footer />
   </div>
 </template>
 
 <script setup>
-// Composant racine de l'application
+import Navbar from '@/components/Navbar.vue'
+import Footer from '@/components/Footer.vue'
 </script>
 
 <style scoped>
