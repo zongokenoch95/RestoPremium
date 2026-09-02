@@ -1,7 +1,11 @@
-const express = require('express');
-const fs = require('fs');
-const path = require('path');
-const cors = require('cors');
+import express from 'express';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import cors from 'cors';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = 3000;
@@ -45,12 +49,32 @@ app.post('/api/orders', (req, res) => {
   const newOrder = req.body;
 
   fs.readFile(ordersFilePath, 'utf8', (err, data) => {
+    if (err && err.code === 'ENOENT') {
+      // Si le fichier n'existe pas, créer un tableau vide
+      const orders = [];
+      const orderId = Date.now();
+      const orderWithId = {
+        orderId,
+        status: "created",
+        ...newOrder
+      };
+      orders.push(orderWithId);
+      
+      fs.writeFile(ordersFilePath, JSON.stringify(orders, null, 2), (err) => {
+        if (err) {
+          return res.status(500).json({ error: "Erreur lors de l'enregistrement de la commande" });
+        }
+        res.status(201).json({ orderId: orderId, status: "created" });
+      });
+      return;
+    }
+    
     if (err) {
       return res.status(500).json({ error: "Erreur serveur lors de la lecture des commandes" });
     }
     
     const orders = JSON.parse(data);
-    const orderId = Date.now(); // Génération d'un ID unique basé sur le timestamp
+    const orderId = Date.now();
     
     const orderWithId = {
       orderId,
@@ -70,5 +94,5 @@ app.post('/api/orders', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Serveur backend démarré sur http://localhost:${PORT}`);
+  console.log(`✅ Serveur backend démarré sur http://localhost:${PORT}`);
 });
