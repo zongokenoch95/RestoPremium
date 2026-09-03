@@ -3,7 +3,7 @@ import { useCartStore } from '@/stores/cartStore'
 
 const cartStore = useCartStore()
 
-defineProps({
+const props = defineProps({
   product: {
     type: Object,
     required: true
@@ -27,13 +27,15 @@ const addToCart = () => {
 
 <template>
   <div class="product-card">
-    <div class="image-container">
+    <router-link :to="{ name: 'ProductDetails', params: { id: product.id } }" class="image-container">
       <img :src="getImageUrl(product.image)" :alt="product.name" />
       <span v-if="product.tag" class="tag">{{ product.tag }}</span>
-    </div>
+    </router-link>
     
     <div class="card-body">
-      <h3 class="product-title">{{ product.name }}</h3>
+      <router-link :to="{ name: 'ProductDetails', params: { id: product.id } }" class="title-link">
+        <h3 class="product-title">{{ product.name }}</h3>
+      </router-link>
       <p class="product-description">{{ product.description }}</p>
       
       <div class="card-footer">
@@ -64,6 +66,7 @@ const addToCart = () => {
   position: relative;
   height: 200px;
   width: 100%;
+  display: block;
 }
 
 .image-container img {
@@ -90,11 +93,20 @@ const addToCart = () => {
   flex-grow: 1;
 }
 
+.title-link {
+  text-decoration: none;
+}
+
 .product-title {
   color: #f5f5f5;
   font-family: 'Playfair Display', serif;
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
+  transition: color 0.2s;
+}
+
+.title-link:hover .product-title {
+  color: #d4af37;
 }
 
 .product-description {
