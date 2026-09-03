@@ -46,5 +46,53 @@
     "price": 1500,
     "description": "Boules de glace artisanale au choix",
     "image": "glace.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Brochettes de foie",
+    "category": "Entrées",
+    "price": 2500,
+    "description": "Brochettes de foie tendres marinées aux épices et oignons",
+    "image": "brochette.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Riz Gras au bœuf",
+    "category": "Plat",
+    "price": 3500,
+    "description": "Riz parfumé mijoté dans un bouillon riche avec morceaux de bœuf",
+    "image": "rizgras.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Jus de Gingembre (Gnamakoudji)",
+    "category": "Boissons",
+    "price": 600,
+    "description": "Boisson énergisante et piquante à base de gingembre frais",
+    "image": "gingembre.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Nectar de Bouye",
+    "category": "Boissons",
+    "price": 700,
+    "description": "Jus onctueux et rafraîchissant de pain de singe",
+    "image": "bouye.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Salade de fruits frais",
+    "category": "Desserts",
+    "price": 1800,
+    "description": "Assortiment de fruits de saison découpés et parfumés à la menthe",
+    "image": "fruits.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Crêpe au sucre",
+    "category": "Desserts",
+    "price": 1200,
+    "description": "Crêpe moelleuse nappée de sucre et beurre",
+    "image": "crepe.jpg"
   }
 ]
