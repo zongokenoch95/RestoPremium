@@ -30,6 +30,10 @@ export const useMenuStore = defineStore('menu', {
         this.isLoading = false
       }
     },
+    // Alias pour éviter toute erreur si un composant appelle fetchProducts
+    async fetchProducts() {
+      return await this.fetchMenu()
+    },
     async fetchProductById(id) {
       this.isLoading = true
       this.error = null

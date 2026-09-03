@@ -1,9 +1,12 @@
 <script setup>
-// Section promotionnelle ou événementielle
+import eventBg from '@/assets/images/event.jpg'
 </script>
 
 <template>
-  <section class="promo-banner">
+  <section 
+    class="promo-banner" 
+    :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${eventBg})` }"
+  >
     <div class="promo-content">
       <span class="promo-badge">ÉVÉNEMENT SPÉCIAL</span>
       <h2>Soirée Dégustation & Musique Live</h2>
@@ -15,7 +18,9 @@
 
 <style scoped>
 .promo-banner {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200') center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border: 1px solid #2a2a2a;
   border-radius: 12px;
   margin: 60px auto;

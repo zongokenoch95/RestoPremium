@@ -1,33 +1,26 @@
 <script setup>
-import { ref } from 'vue'
+import { onMounted, computed } from 'vue'
+import { useMenuStore } from '@/stores/menuStore'
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 import PromoBanner from '@/components/PromoBanner.vue'
 import ProductCard from '@/components/ProductCard.vue'
 
-const featuredProducts = ref([
-  {
-    id: 1,
-    name: 'Poulet Bicyclette Braisé aux Épices Nobles',
-    price: 12500,
-    description: 'Élevé en plein air, mariné 24h dans un mélange secret d’épices de l’Afrique de l’Ouest.',
-    image: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=500'
-  },
-  {
-    id: 2,
-    name: 'Riz Gras Royal au Jarret d’Agneau',
-    price: 18000,
-    description: 'Riz parfumé cuit dans un bouillon riche, accompagné d’un jarret d’agneau fondant.',
-    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500'
-  },
-  {
-    id: 3,
-    name: 'Tartelette au Dêgê & Mangue Flambée',
-    price: 8500,
-    description: 'Une réinterprétation audacieuse du classique : crème légère au petit mil et mangues.',
-    image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500'
+const menuStore = useMenuStore()
+
+onMounted(async () => {
+  if (menuStore.products.length === 0) {
+    await menuStore.fetchProducts()
   }
-])
+})
+
+// Sélectionne explicitement les plats avec les ID 1, 5 et 8
+const featuredProducts = computed(() => {
+  const targetIds = [1, 5, 14]
+  return targetIds
+    .map(id => menuStore.products.find(p => p.id === id))
+    .filter(Boolean)
+})
 </script>
 
 <template>
@@ -54,7 +47,7 @@ const featuredProducts = ref([
       <div class="featured-grid">
         <ProductCard 
           v-for="product in featuredProducts" 
-          :key="product.id" 
+          v-bind:key="product.id" 
           :product="product" 
         />
       </div>
@@ -75,7 +68,7 @@ const featuredProducts = ref([
 
 .hero-section {
   height: 85vh;
-  background: linear-gradient(rgba(13, 13, 13, 0.5), rgba(13, 13, 13, 0.95)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200') center/cover no-repeat;
+  background: linear-gradient(rgba(13, 13, 13, 0.5), rgba(13, 13, 13, 0.95)), url('@/assets/images/couverture.png') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;

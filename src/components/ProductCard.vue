@@ -3,12 +3,22 @@ import { useCartStore } from '@/stores/cartStore'
 
 const cartStore = useCartStore()
 
-const props = defineProps({
+defineProps({
   product: {
     type: Object,
     required: true
   }
 })
+
+// Importation dynamique des images avec Vite (retourne directement l'URL grâce à import: 'default')
+const images = import.meta.glob('@/assets/images/*', { eager: true, import: 'default' })
+
+const getImageUrl = (imagePath) => {
+  if (!imagePath) return ''
+  const fileName = imagePath.split('/').pop()
+  const matchedKey = Object.keys(images).find((key) => key.endsWith(fileName))
+  return matchedKey ? images[matchedKey] : ''
+}
 
 const addToCart = () => {
   cartStore.addItem(props.product)
@@ -18,7 +28,7 @@ const addToCart = () => {
 <template>
   <div class="product-card">
     <div class="image-container">
-      <img :src="product.image" :alt="product.name" />
+      <img :src="getImageUrl(product.image)" :alt="product.name" />
       <span v-if="product.tag" class="tag">{{ product.tag }}</span>
     </div>
     
