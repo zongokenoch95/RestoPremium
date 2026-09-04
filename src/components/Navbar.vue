@@ -1,20 +1,23 @@
+<script setup>
+import { useCartStore } from '@/stores/cartStore'
+
+const cartStore = useCartStore()
+</script>
+
 <template>
   <header class="navbar">
     <div class="container navbar-container">
-      <!-- 1. Logo de la Maison (Gauche) -->
-      <router-link to="/" class="navbar-brand">
+      <router-link :to="{ name: 'Home' }" class="navbar-brand">
         <span class="brand-text">Le Premium</span>
       </router-link>
 
-      <!-- 2. Navigation centrée -->
       <nav class="navbar-nav">
-        <router-link to="/" class="nav-link" exact-active-class="active">Home</router-link>
-        <router-link to="/menu" class="nav-link" active-class="active">Menu</router-link>
+        <router-link :to="{ name: 'Home' }" class="nav-link" active-class="active">Home</router-link>
+        <router-link :to="{ name: 'Menu' }" class="nav-link" active-class="active">Menu</router-link>
       </nav>
 
-      <!-- 3. Sac / Panier minimaliste (Droite) -->
       <div class="navbar-actions">
-        <router-link to="/cart" class="cart-btn" aria-label="Consulter mon panier">
+        <router-link :to="{ name: 'Cart' }" class="cart-btn" aria-label="Consulter mon panier">
           <svg class="cart-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
             <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -29,12 +32,6 @@
   </header>
 </template>
 
-<script setup>
-import { useCartStore } from '@/stores/cartStore'
-
-const cartStore = useCartStore()
-</script>
-
 <style scoped>
 .navbar {
   position: sticky;
@@ -42,7 +39,6 @@ const cartStore = useCartStore()
   z-index: 1000;
   background-color: rgba(13, 13, 13, 0.92);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -51,28 +47,23 @@ const cartStore = useCartStore()
   align-items: center;
   justify-content: space-between;
   height: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* Logo "Le Premium" en italique sérif doré */
 .navbar-brand {
   text-decoration: none;
 }
 
 .brand-text {
-  font-family: var(--font-serif);
+  font-family: 'Playfair Display', serif;
   font-style: italic;
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--primary-gold);
-  letter-spacing: 0.5px;
-  transition: opacity var(--transition-fast);
+  color: #c5a059;
 }
 
-.brand-text:hover {
-  opacity: 0.9;
-}
-
-/* Liens centraux */
 .navbar-nav {
   display: flex;
   align-items: center;
@@ -86,16 +77,15 @@ const cartStore = useCartStore()
   text-decoration: none;
   padding: 0.4rem 0;
   position: relative;
-  transition: color var(--transition-fast);
+  transition: color 0.2s;
 }
 
 .nav-link:hover {
-  color: var(--primary-gold);
+  color: #c5a059;
 }
 
-/* Soulignement doré actif */
 .nav-link.active {
-  color: var(--text-white);
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -106,11 +96,10 @@ const cartStore = useCartStore()
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: var(--primary-gold);
+  background-color: #c5a059;
   border-radius: 1px;
 }
 
-/* Bouton Sac / Panier */
 .navbar-actions {
   display: flex;
   align-items: center;
@@ -121,14 +110,13 @@ const cartStore = useCartStore()
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-white);
+  color: #ffffff;
   padding: 0.5rem;
-  transition: transform var(--transition-fast), color var(--transition-fast);
+  transition: color 0.2s;
 }
 
 .cart-btn:hover {
-  color: var(--primary-gold);
-  transform: scale(1.05);
+  color: #c5a059;
 }
 
 .cart-svg {
@@ -136,35 +124,21 @@ const cartStore = useCartStore()
   height: 24px;
 }
 
-/* Badge minimaliste */
 .cart-badge {
   position: absolute;
   top: 0;
   right: -4px;
-  background-color: #e11d48; /* Teinte rose-rouge de la capture */
+  background-color: #e11d48;
   color: #ffffff;
   font-size: 0.7rem;
   font-weight: 700;
   min-width: 18px;
   height: 18px;
   padding: 0 4px;
-  border-radius: var(--radius-full);
+  border-radius: 9999px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--bg-dark);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-}
-
-@media (max-width: 640px) {
-  .navbar-container {
-    height: 70px;
-  }
-  .brand-text {
-    font-size: 1.4rem;
-  }
-  .navbar-nav {
-    gap: 1.5rem;
-  }
+  border: 2px solid #0d0d0d;
 }
 </style>

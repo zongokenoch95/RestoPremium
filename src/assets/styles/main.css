@@ -1,40 +1,47 @@
 /* ==========================================================
-   Charte Graphique & Styles Globaux - "Le Premium"
-   Thème : Dark Luxury & Haute Gastronomie Afro-Gourmet
+   Charte Graphique & Styles Globaux - Restaurant "Le Premium"
    ========================================================== */
 
 :root {
-  /* Palette Haute Gastronomie */
-  --bg-dark: #0d0d0d;            /* Fond principal noir profond */
-  --bg-card: #151515;            /* Fond des cartes et sections */
-  --bg-card-hover: #1c1c1c;      /* Survol des cartes */
-  --bg-surface: #1f1f1f;         /* Fond des badges et contrôles */
+  /* Palette de couleurs */
+  --primary: #e67e22;            /* Orange ambré chaleureux */
+  --primary-hover: #d35400;
+  --primary-light: #fef5ec;
+  --secondary: #2c3e50;          /* Bleu nuit / charbon élégant */
+  --secondary-hover: #1a252f;
   
-  --primary-gold: #d4a34b;       /* Or chaud de marque */
-  --primary-gold-hover: #e5b85d; /* Or lumineux au survol */
-  --primary-gold-dim: rgba(212, 163, 75, 0.15);
+  --accent: #27ae60;             /* Vert d'accentuation / succès / prix */
+  --accent-light: #eafaf1;
+  --danger: #e74c3c;             /* Rouge suppression / erreur */
+  --danger-light: #fdf2f2;
+  --warning: #f39c12;
   
-  --text-white: #ffffff;         /* Titres & textes clairs */
-  --text-muted: #a3a3a3;         /* Descriptions et métadonnées */
-  --text-dim: #737373;           /* Textes secondaires discrets */
-  --text-gold: #d4a34b;          /* Textes dorés d'accentuation */
-  
-  --border-color: #242424;       /* Bordures subtiles */
-  --border-gold: #d4a34b;        /* Bordure dorée pour boutons & focus */
-  --border-gold-subtle: rgba(212, 163, 75, 0.3);
+  /* Arrière-plans & Surfaces */
+  --bg-main: #f8fafc;            /* Fond de page très légèrement teinté */
+  --bg-card: #ffffff;            /* Fond des cartes et conteneurs */
+  --bg-alt: #f1f5f9;             /* Fond secondaire pour filtres / bannières */
 
-  /* Typographies */
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Textes & Typographies */
+  --text-main: #1e293b;          /* Texte principal lisible et contrasté */
+  --text-muted: #64748b;         /* Texte secondaire / descriptions */
+  --text-light: #94a3b8;
+  --text-white: #ffffff;
   
-  /* Rayons & Ombres */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  /* Bordures, Ombres & Rayons */
+  --border-color: #e2e8f0;
+  --border-focus: #e67e22;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
   --radius-full: 9999px;
   
-  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --shadow-gold: 0 4px 20px rgba(212, 163, 75, 0.25);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 8px 20px rgba(230, 126, 34, 0.18);
+
+  /* Typographie */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
 }
@@ -55,21 +62,11 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--bg-dark);
-  color: var(--text-white);
+  background-color: var(--bg-main);
+  color: var(--text-main);
   line-height: 1.6;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
-}
-
-h1, h2, h3, h4, .font-serif {
-  font-family: var(--font-serif);
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-p {
-  color: var(--text-muted);
 }
 
 img {
@@ -81,11 +78,11 @@ img {
 a {
   color: inherit;
   text-decoration: none;
-  transition: all var(--transition-fast);
+  transition: color var(--transition-fast);
 }
 
 button, input, select, textarea {
-  font-family: var(--font-sans);
+  font-family: inherit;
   font-size: inherit;
 }
 
@@ -96,35 +93,11 @@ button, input, select, textarea {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1.25rem;
 }
 
 .page-wrapper {
-  padding: 3rem 0 5rem;
-}
-
-.section-title {
-  font-size: 2.4rem;
-  color: var(--text-white);
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-.section-subtitle {
-  font-size: 1rem;
-  color: var(--text-muted);
-  text-align: center;
-  max-width: 650px;
-  margin: 0 auto 2.5rem;
-  line-height: 1.6;
-}
-
-.gold-divider {
-  width: 60px;
-  height: 3px;
-  background-color: var(--primary-gold);
-  margin: 1rem auto 2.5rem;
-  border-radius: var(--radius-full);
+  padding: 2rem 0 4rem;
 }
 
 /* ==========================================================
@@ -135,12 +108,9 @@ button, input, select, textarea {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.8rem 1.6rem;
+  padding: 0.75rem 1.5rem;
   font-weight: 600;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   border: 1px solid transparent;
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -148,90 +118,109 @@ button, input, select, textarea {
 }
 
 .btn:disabled {
-  opacity: 0.5;
+  opacity: 0.6;
   cursor: not-allowed;
 }
 
-/* Bouton Or plein (Consulter le Menu, Passer la commande...) */
-.btn-gold {
-  background-color: var(--primary-gold);
-  color: #0d0d0d;
-  font-weight: 700;
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--text-white);
+  box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
 }
 
-.btn-gold:hover:not(:disabled) {
-  background-color: var(--primary-gold-hover);
-  box-shadow: var(--shadow-gold);
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(230, 126, 34, 0.4);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  color: var(--text-white);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--secondary-hover);
   transform: translateY(-2px);
 }
 
-/* Bouton Or avec bordure fine (+ Ajouter, Voir les détails...) */
-.btn-gold-outline {
+.btn-outline {
   background-color: transparent;
-  border: 1px solid var(--border-gold-subtle);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background-color: var(--primary);
   color: var(--text-white);
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: 0.9rem;
-  padding: 0.5rem 1rem;
 }
 
-.btn-gold-outline:hover:not(:disabled) {
-  border-color: var(--primary-gold);
-  color: var(--primary-gold);
-  background-color: var(--primary-gold-dim);
+.btn-danger {
+  background-color: var(--danger-light);
+  color: var(--danger);
+  border-color: rgba(231, 76, 60, 0.2);
 }
 
-/* Bouton secondaire sombre */
-.btn-dark {
-  background-color: var(--bg-surface);
+.btn-danger:hover:not(:disabled) {
+  background-color: var(--danger);
   color: var(--text-white);
-  border: 1px solid var(--border-color);
 }
 
-.btn-dark:hover:not(:disabled) {
-  border-color: var(--primary-gold);
-  color: var(--primary-gold);
+.btn-sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
 }
 
 /* ==========================================================
-   Cartes
+   Badges & Étiquettes
    ========================================================== */
-.card-dark {
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: var(--radius-full);
+}
+
+.badge-primary {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.badge-success {
+  background-color: var(--accent-light);
+  color: var(--accent);
+}
+
+/* ==========================================================
+   Cartes & Éléments
+   ========================================================== */
+.card {
   background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-sm);
   transition: all var(--transition-normal);
   overflow: hidden;
 }
 
-.card-dark:hover {
-  border-color: var(--border-gold-subtle);
-  background-color: var(--bg-card-hover);
-  transform: translateY(-3px);
+.card:hover {
+  box-shadow: var(--shadow-md);
 }
 
 /* ==========================================================
-   Badges / Tags
-   ========================================================== */
-.tag-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.6rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  background-color: rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-sm);
-  backdrop-filter: blur(4px);
-}
-
-/* ==========================================================
-   Formulaires
+   Formulaires & Champs de saisie
    ========================================================== */
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -239,30 +228,24 @@ button, input, select, textarea {
 }
 
 .form-label {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-main);
 }
 
-.form-input {
+.form-control {
   width: 100%;
-  padding: 0.9rem 1.2rem;
-  background-color: #121212;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
-  color: var(--text-white);
-  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-card);
+  color: var(--text-main);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.form-input:focus {
+.form-control:focus {
   outline: none;
-  border-color: var(--primary-gold);
-  box-shadow: 0 0 0 2px rgba(212, 163, 75, 0.2);
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.15);
 }
 
-.form-input::placeholder {
-  color: var(--text-dim);
-}

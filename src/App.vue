@@ -1,17 +1,14 @@
+<script setup>
+// Composant racine de l'application
+</script>
+
 <template>
   <div id="restaurant-app">
-    <Navbar />
     <main class="main-content">
-      <router-view />
+      <router-view :key="$route.fullPath" />
     </main>
-    <Footer />
   </div>
 </template>
-
-<script setup>
-import Navbar from '@/components/Navbar.vue'
-import Footer from '@/components/Footer.vue'
-</script>
 
 <style scoped>
 #restaurant-app {
