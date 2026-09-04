@@ -73,6 +73,7 @@ app.get('/api/orders', (req, res) => {
 });
 
 // 4. POST /api/orders : Enregistrer une nouvelle commande
+// 3. POST /api/orders : Enregistrer une nouvelle commande
 app.post('/api/orders', (req, res) => {
   const newOrder = req.body;
 

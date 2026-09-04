@@ -1,1 +1,37 @@
-[]
+[
+  {
+    "orderId": 1788541183429,
+    "status": "created",
+    "customerName": "zek",
+    "tableNumber": 4,
+    "specialNotes": "piment",
+    "items": [
+      {
+        "product": {
+          "id": 5,
+          "name": "Thiéboudienne (Riz au poisson et viande)",
+          "category": "Plat",
+          "price": 4000,
+          "description": "Plat traditionnel de riz rouge mijoté au poisson et légumes variés",
+          "image": "thieb.jpg"
+        },
+        "quantity": 1,
+        "price": 4000
+      },
+      {
+        "product": {
+          "id": 14,
+          "name": "Mafé",
+          "category": "Plat",
+          "price": 2000,
+          "description": "Riz sauce arrachide accompagné de viande de boeuf ou de poisson",
+          "image": "mafe.jpg"
+        },
+        "quantity": 1,
+        "price": 2000
+      }
+    ],
+    "total": 6000,
+    "date": "2026-09-04T16:59:43.422Z"
+  }
+]

@@ -30,7 +30,7 @@ const featuredProducts = computed(() => {
     <section class="hero-section">
       <div class="hero-overlay">
         <span class="sub-title">HAUTE GASTRONOMIE SAHÉLIENNE</span>
-        <h1>L'Art Culinaire Burkinabè Sublimé</h1>
+        <h1>Toute la saveur d'Afrique de l'Ouest en un seule endroit.</h1>
         <p>Une expérience sensorielle inédite où la tradition ancestrale rencontre l'élégance contemporaine.</p>
         <RouterLink to="/menu" class="btn-primary">CONSULTER LE MENU</RouterLink>
       </div>
