@@ -1,32 +1,57 @@
 <script setup>
-import eventBg from '@/assets/images/event.jpg'
+import event1Bg from '@/assets/images/event.jpg'
+import event2Bg from '@/assets/images/event2.jpg'
 </script>
 
 <template>
-  <section 
-    class="promo-banner" 
-    :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${eventBg})` }"
-  >
-    <div class="promo-content">
-      <span class="promo-badge">ÉVÉNEMENT SPÉCIAL</span>
-      <h2>Soirée Dégustation & Musique Live</h2>
-      <p>Rejoignez-nous chaque vendredi pour découvrir nos accords mets-vins exclusifs animés par des artistes locaux.</p>
-      <button class="btn-promo">Réserver une table</button>
+  <section class="events-grid">
+    <!-- 1er Événement -->
+    <div 
+      class="promo-banner" 
+      :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${event1Bg})` }"
+    >
+      <div class="promo-content">
+        <span class="promo-badge">ÉVÉNEMENT SPÉCIAL</span>
+        <h2>Soirée Dégustation & Musique Live</h2>
+        <p>Rejoignez-nous chaque vendredi pour découvrir nos accords mets-vins exclusifs animés par des artistes locaux.</p>
+      </div>
+    </div>
+
+    <!-- 2ème Événement -->
+    <div 
+      class="promo-banner" 
+      :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${event2Bg})` }"
+    >
+      <div class="promo-content">
+        <span class="promo-badge">RENDEZ-VOUS GOURMAND</span>
+        <h2>Brunch Acoustique du Dimanche</h2>
+        <p>Profitez d'un moment chaleureux en famille ou entre amis autour de notre buffet varié et d'une douce ambiance musicale.</p>
+      </div>
     </div>
   </section>
 </template>
 
 <style scoped>
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
 .promo-banner {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   border: 1px solid #2a2a2a;
   border-radius: 12px;
-  margin: 60px auto;
   padding: 50px 30px;
   text-align: center;
-  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .promo-content {
@@ -47,7 +72,7 @@ import eventBg from '@/assets/images/event.jpg'
 .promo-banner h2 {
   color: #f5f5f5;
   font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   margin: 20px 0 10px;
 }
 
@@ -55,22 +80,6 @@ import eventBg from '@/assets/images/event.jpg'
   color: #a0a0a0;
   font-size: 0.95rem;
   line-height: 1.5;
-  margin-bottom: 25px;
-}
-
-.btn-promo {
-  background-color: transparent;
-  border: 1px solid #d4af37;
-  color: #d4af37;
-  padding: 10px 24px;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-promo:hover {
-  background-color: #d4af37;
-  color: #000;
+  margin: 0;
 }
 </style>
